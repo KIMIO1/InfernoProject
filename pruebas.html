@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Estilos del campo de búsqueda */
+        #search-container {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        #search-input {
+            display: none;
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: 0;
+            width: 150px; /* Ajusta el ancho según tus necesidades */
+            height: 30px; /* Ajusta la altura según tus necesidades */
+            transition: opacity 0.5s ease-in-out, width 0.5s ease-in-out, height 0.5s ease-in-out;
+        }
+    </style>
+</head>
+<body class="text-center">
+
+<div class="container mt-5">
+
+    <!-- Icono de la lupa con contenedor -->
+    <div id="search-container">
+        <div id="search-icon" class="btn btn-primary">
+            <i class="fa fa-search"></i> <!-- Asegúrate de incluir la biblioteca de iconos, como Font Awesome -->
+        </div>
+
+        <!-- Campo de búsqueda oculto -->
+        <input type="text" id="search-input" class="form-control" placeholder="Buscar...">
+    </div>
+
+    <div class="buscar">
+        <input type="text"  placeholder="Buscar">
+        <div class="btn">
+            <i class="fa fa-search"></i>
+        </div>
+    </div>
+
+</div>
+
+<!-- Scripts de Bootstrap y Font Awesome -->
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+
+<script>
+    // Función para mostrar/ocultar el campo de búsqueda con animación
+    document.getElementById('search-icon').addEventListener('click', function() {
+        var searchInput = document.getElementById('search-input');
+        if (searchInput.style.opacity === '0') {
+            searchInput.style.opacity = '0';
+            searchInput.style.width = '150px'; // Restablece el ancho al valor original
+            searchInput.style.height = '30px'; // Restablece la altura al valor original
+            setTimeout(function() {
+                searchInput.style.display = 'none';
+            }, 500);
+
+        } else {
+            searchInput.style.display = 'block';
+            setTimeout(function() {
+                searchInput.style.opacity = '1';
+                searchInput.style.width = '200px'; // Ajusta el ancho según tus necesidades
+                searchInput.style.height = '40px'; // Ajusta la altura según tus necesidades
+            }, 10);
+        }
+    });
+</script>
+
+</body>
+</html>
