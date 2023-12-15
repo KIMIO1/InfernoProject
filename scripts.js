@@ -7,7 +7,7 @@ function mostrarCatalogo() {
     // Recupera los productos del almacenamiento local
     const productos = JSON.parse(localStorage.getItem("productos")) || [];
 
-    productos.forEach(producto => {
+    productos.forEach((producto, index) => {
         const divProducto = document.createElement("div");
         divProducto.classList.add("product");
 
@@ -27,6 +27,18 @@ function mostrarCatalogo() {
         descripcion.textContent = producto.descripcion;
         divProducto.appendChild(descripcion);
 
+        // Agrega el botón de modificar
+        const btnModificar = document.createElement("button");
+        btnModificar.textContent = "Modificar";
+        btnModificar.addEventListener("click", () => abrirModalModificar(index));
+        divProducto.appendChild(btnModificar);
+
+        // Agrega el botón de eliminar
+        const btnEliminar = document.createElement("button");
+        btnEliminar.textContent = "Eliminar";
+        btnEliminar.addEventListener("click", () => eliminarProducto(index));
+        divProducto.appendChild(btnEliminar);
+
         catalogo.appendChild(divProducto);
     });
 }
@@ -42,6 +54,20 @@ function agregarProducto() {
 
     // Agrega el nuevo producto a la lista
     productos.push({ nombre, precio, descripcion, imagen });
+
+    // Guarda la lista actualizada en el almacenamiento local
+    localStorage.setItem("productos", JSON.stringify(productos));
+
+    // Actualiza la visualización del catálogo
+    mostrarCatalogo();
+}
+
+function eliminarProducto(index) {
+    // Obtiene los productos actuales del almacenamiento local
+    const productos = JSON.parse(localStorage.getItem("productos")) || [];
+
+    // Elimina el producto del array
+    productos.splice(index, 1);
 
     // Guarda la lista actualizada en el almacenamiento local
     localStorage.setItem("productos", JSON.stringify(productos));

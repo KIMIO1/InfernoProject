@@ -53,28 +53,5 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
 
-<script>
-    // Función para mostrar/ocultar el campo de búsqueda con animación
-    document.getElementById('search-icon').addEventListener('click', function() {
-        var searchInput = document.getElementById('search-input');
-        if (searchInput.style.opacity === '0') {
-            searchInput.style.opacity = '0';
-            searchInput.style.width = '150px'; // Restablece el ancho al valor original
-            searchInput.style.height = '30px'; // Restablece la altura al valor original
-            setTimeout(function() {
-                searchInput.style.display = 'none';
-            }, 500);
-
-        } else {
-            searchInput.style.display = 'block';
-            setTimeout(function() {
-                searchInput.style.opacity = '1';
-                searchInput.style.width = '200px'; // Ajusta el ancho según tus necesidades
-                searchInput.style.height = '40px'; // Ajusta la altura según tus necesidades
-            }, 10);
-        }
-    });
-</script>
-
 </body>
 </html>
